@@ -44,20 +44,47 @@ function checkSignupInfo(username, password, passwordConfirm) {
 }
 
 function login (username, password) {
-  // TODO: implement login here
-
+  skygear.loginWithUsername(username, password).then((user) => {
+    console.log(user); // user object
+}, (error) => {
+    console.error(error);
+    swal({
+      title: "Error!",
+      text: "Hey, "+error.error.message,
+      type: "error",
+      confirmButtonText: "Okay"
+    });
+  })
 }
 
 function signup (username, password, passwordConfirm) {
   if(checkSignupInfo(username, password, passwordConfirm)) {
-    // TODO: implement signup here
+    skygear.signupWithUsername(username, password).then((user) => {
+      console.log(user); // user object
+    swal({
+      title: "Welcome",
+      text: "Thanks for signing up!",
+      type: "success",
+      confirmButtonText: "Next"
+    });
 
-
+  }, (error) => {
+      swal({
+        title: "Error!",
+        text: "Hey, "+error.error.message,
+        type: "error",
+        confirmButtonText: "Okay"
+      });
+    });
   }
 }
 
 function logout () {
-  // TODO: implement logout here
+  skygear.logout().then(() => {
+    console.log('logout successfully');
+  }, (error) => {
+    console.error(error);
+  });
 }
 
 // User Profile

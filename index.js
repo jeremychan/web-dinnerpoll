@@ -1,7 +1,7 @@
-// Include Skygear 
+// Include Skygear
   skygear.config({
-    'endPoint': '',
-    'apiKey': '',
+    'endPoint': 'https://jeremydinnerpoll.skygeario.com/',
+    'apiKey': '<removed>',
   }).then(() => {
     console.log('skygear container is now ready for making API calls.');
     updateAppView();
